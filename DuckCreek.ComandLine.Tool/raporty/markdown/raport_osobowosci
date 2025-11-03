@@ -1,0 +1,50 @@
+# Summary
+
+**Source**: https://www.16personalities.com/pl/darmowy-test-osobowosci
+
+# Summary of the HTML Structure for the 16Personalities Personality Test Page
+
+## Overview
+The document is an HTML layout for the Polish version of the free personality test on the 16Personalities website.
+
+## Metadata
+- **Title**: Darmowy test osobowości | 16Personalities
+- **Languages Supported**: Multiple, with a focus on Polish
+- **Description**: No specific description provided
+- **Version**: v2.113.5
+
+## Key Sections
+### Head
+- Contains meta tags for characters, viewport settings, Open Graph, and Twitter card details.
+- Links to stylesheets from Google Fonts and other assets.
+
+### Body Structure
+- **Accessibility Navigation**: Quick access to main content.
+- **Header Navigation**:
+  - Logo and links to various sections:
+    - Personality Test
+    - Personality Types
+    - Premium Career Suite
+    - Services
+    - Articles
+- **Main Content Area**:
+  - Includes a quiz component with multiple questions related to personality traits.
+
+### Footer
+- Divided into four sections:
+  1. **Products**: Links to various product offerings such as Premium Career Suite and Team Assessments.
+  2. **Resources**: Provides access to the personality test, articles, and framework details.
+  3. **Help**: Includes links to contact information and FAQs.
+  4. **Our Other Creations**: Mentions related projects like NPQE® and MindTrackers®.
+
+## Additional Elements
+- **Scripts**: Google Tag Manager for analytics and tracking.
+- Uses various icons and SVGs for navigation and interaction elements.
+
+## Accessibility Features
+- Includes elements for text display, keyboard navigation, and accessibility settings.
+
+## Language Management
+- Incorporates language switching capabilities with multiple language options available.
+
+This structure indicates a well-planned navigation system, optimized for user experience while offering valuable insights via the personality test.
