@@ -1,11 +1,11 @@
-namespace DuckCreek.ComandLine.Tool.Services;
+namespace DuckCreek.ComandLine.Tool.Clients.HtmlFetching;
 
-public interface IHtmlFetcher
+public interface IHtmlFetcherClient
 {
     Task<string> FetchHtmlAsync(string url, CancellationToken cancellationToken = default);
 }
 
-internal sealed class HtmlFetcher(HttpClient httpClient) : IHtmlFetcher
+internal sealed class HtmlFetcherClient(HttpClient httpClient) : IHtmlFetcherClient
 {
     public async Task<string> FetchHtmlAsync(string url, CancellationToken cancellationToken = default)
     {

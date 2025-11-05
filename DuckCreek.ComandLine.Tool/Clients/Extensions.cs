@@ -1,9 +1,9 @@
-using DuckCreek.ComandLine.Tool.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Security;
 using System.Security.Authentication;
 using DuckCreek.ComandLine.Tool.Clients.Gpt;
+using DuckCreek.ComandLine.Tool.Clients.HtmlFetching;
 using DuckCreek.ComandLine.Tool.Clients.Settings;
 using Microsoft.Extensions.Configuration;
 
@@ -31,7 +31,7 @@ public static class HttpClientExtensions
     
     private static IServiceCollection RegisterHtmlFetcherClient(this IServiceCollection services)
     {
-        services.AddHttpClient<IHtmlFetcher, HtmlFetcher>()
+        services.AddHttpClient<IHtmlFetcherClient, HtmlFetcherClient>()
             .ConfigurePrimaryHttpMessageHandler(() => new SocketsHttpHandler
             {
                 UseCookies = false,

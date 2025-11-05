@@ -1,7 +1,6 @@
 ﻿using Cocona;
 using DuckCreek.ComandLine.Tool.Clients;
 using DuckCreek.ComandLine.Tool.Services;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 
 const string settings = "appsettings.json";
@@ -11,7 +10,7 @@ var builder = CoconaApp.CreateBuilder(args);
 builder.Configuration.AddJsonFile(settings, optional: false, reloadOnChange: true);
 
 builder.Services.RegisterHttpClients(builder.Configuration);
-builder.Services.AddScoped<IDocumentSummaryService, DocumentSummaryService>();
+builder.Services.RegisterServices();
 
 var app = builder.Build();
 
