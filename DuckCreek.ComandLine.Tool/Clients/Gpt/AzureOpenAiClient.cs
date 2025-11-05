@@ -8,12 +8,12 @@ namespace DuckCreek.ComandLine.Tool.Clients.Gpt;
 
 public interface IAzureOpenAiClient
 {
-    Task<string> SummarizeTextAsync(string content);
+    Task<string> SummarizeTextAsync(string content, string prompt);
 }
 
 internal sealed class AzureOpenAiClient(IOptions<OpenAiOptions> options) : IAzureOpenAiClient
 {
-    public async Task<string> SummarizeTextAsync(string content)
+    public async Task<string> SummarizeTextAsync(string content, string prompt)
     {
         if (string.IsNullOrWhiteSpace(content))
         {
@@ -26,10 +26,7 @@ internal sealed class AzureOpenAiClient(IOptions<OpenAiOptions> options) : IAzur
         ChatCompletion completion = await chatClient.CompleteChatAsync
         (
             [
-                new SystemChatMessage
-                (
-                    "You are a helpful assistant that summarizes long texts into concise, well-structured Markdown with headings and bullet points"
-                ),
+                new SystemChatMessage(prompt),
                 new UserChatMessage(content)
             ]
         );

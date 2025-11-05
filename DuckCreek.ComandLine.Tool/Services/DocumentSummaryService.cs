@@ -1,5 +1,7 @@
 using DuckCreek.ComandLine.Tool.Clients.Gpt;
 using DuckCreek.ComandLine.Tool.Clients.HtmlFetching;
+using DuckCreek.ComandLine.Tool.Prompts.Enums;
+using DuckCreek.ComandLine.Tool.Prompts.Strategies.Interfaces;
 
 namespace DuckCreek.ComandLine.Tool.Services;
 
@@ -8,12 +10,19 @@ public interface IDocumentSummaryService
     Task GenerateMarkdownSummaryAsync(string url, string outputPath, CancellationToken ct = default);
 }
 
-public class DocumentSummaryService(IHtmlFetcherClient htmlFetcherClient, IAzureOpenAiClient azureOpenAiClient) : IDocumentSummaryService
+internal sealed class DocumentSummaryService
+(
+    IHtmlFetcherClient htmlFetcherClient, 
+    IAzureOpenAiClient azureOpenAiClient,
+    IEnumerable<IPromptStrategy> promptStrategies
+) : IDocumentSummaryService
 {
     public async Task GenerateMarkdownSummaryAsync(string url, string outputPath, CancellationToken ct = default)
     {
+        var promptStrategy = promptStrategies.First(s => s.PromptType is PromptType.SummarizationPrompt);
+        
         var websiteContent = await htmlFetcherClient.FetchHtmlAsync(url, ct);
-        var summary = await azureOpenAiClient.SummarizeTextAsync(websiteContent);
+        var summary = await azureOpenAiClient.SummarizeTextAsync(websiteContent, promptStrategy.GetPrompt());
         
         await SaveMarkdownFileAsync(url, summary, outputPath, ct);
     }

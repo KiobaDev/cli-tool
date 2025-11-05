@@ -1,5 +1,6 @@
 ﻿using Cocona;
 using DuckCreek.ComandLine.Tool.Clients;
+using DuckCreek.ComandLine.Tool.Prompts.Strategies;
 using DuckCreek.ComandLine.Tool.Services;
 using Microsoft.Extensions.Configuration;
 
@@ -11,6 +12,7 @@ builder.Configuration.AddJsonFile(settings, optional: false, reloadOnChange: tru
 
 builder.Services.RegisterHttpClients(builder.Configuration);
 builder.Services.RegisterServices();
+builder.Services.RegisterPromptStrategies();
 
 var app = builder.Build();
 
