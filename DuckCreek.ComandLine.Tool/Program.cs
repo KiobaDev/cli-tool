@@ -24,6 +24,6 @@ app.AddCommand("summarize", async
 ) =>
 {
     await documentSummaryService.GenerateMarkdownSummaryAsync(url, output);
-}).WithDescription("Summarize a long-form article from URL and save to Markdown.");
+}).WithDescription("Summarize a long-form article from URL and save to Markdown");
 
-app.Run();
+await app.RunAsync();
